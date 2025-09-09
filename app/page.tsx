@@ -12,8 +12,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Dialog,
   DialogContent,
@@ -34,132 +32,19 @@ import {
   Shield,
   Users,
   Star,
-  Phone,
   User,
   ChevronDown,
   DollarSign,
 } from "lucide-react";
 import { useEffect } from "react";
+import FormContent from "@/components/form-content";
 
 export default function LeadAgentLanding() {
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    company: "",
-    phone: "",
-    email: "",
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    setIsFormOpen(false);
-    // Reset form
-    setFormData({ name: "", company: "", phone: "", email: "" });
-  };
 
   const openForm = () => {
     setIsFormOpen(true);
   };
-
-  const FormContent = () => (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <Label
-          htmlFor="name"
-          className="text-sm font-medium text-[var(--night)]"
-        >
-          First/Last Name
-        </Label>
-        <Input
-          id="name"
-          name="name"
-          type="text"
-          value={formData.name}
-          onChange={handleInputChange}
-          className="mt-1"
-          required
-        />
-      </div>
-
-      <div>
-        <Label
-          htmlFor="company"
-          className="text-sm font-medium text-[var(--night)]"
-        >
-          Business/Company Name
-        </Label>
-        <Input
-          id="company"
-          name="company"
-          type="text"
-          value={formData.company}
-          onChange={handleInputChange}
-          className="mt-1"
-          required
-        />
-      </div>
-
-      <div>
-        <Label
-          htmlFor="phone"
-          className="text-sm font-medium text-[var(--night)]"
-        >
-          Phone number
-        </Label>
-        <Input
-          id="phone"
-          name="phone"
-          type="tel"
-          value={formData.phone}
-          onChange={handleInputChange}
-          className="mt-1"
-          required
-        />
-      </div>
-
-      <div>
-        <Label
-          htmlFor="email"
-          className="text-sm font-medium text-[var(--night)]"
-        >
-          Email Address
-        </Label>
-        <Input
-          id="email"
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleInputChange}
-          className="mt-1"
-          required
-        />
-      </div>
-
-      <Button
-        type="submit"
-        className="w-full bg-[var(--forest)] hover:bg-[var(--forest)]/90 text-[var(--antiflash-white)] mt-6"
-      >
-        <Phone className="h-4 w-4 mr-2" />
-        Book Growth Call
-      </Button>
-
-      <div className="text-center mt-4">
-        <p className="text-sm text-[var(--night)] mb-1">OR</p>
-        <p className="text-sm text-[var(--night)]">
-          Directly contact us to The Lead Agent Admin:{" "}
-          <span className="text-[var(--forest)] font-medium">0472 990 917</span>
-        </p>
-      </div>
-    </form>
-  );
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
